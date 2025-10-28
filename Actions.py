@@ -86,6 +86,8 @@ class Actions:
     
     def capture_tower_health(self):
         BASE_PATH = os.path.join(self.script_dir, 'ocr_captures') #the folder the images are saved to
+        if not os.path.exists(BASE_PATH):
+            os.makedirs(BASE_PATH)
         capture_data = {
             "l_enemyprincess": (),
             "enemy_king": (),
