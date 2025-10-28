@@ -3,6 +3,7 @@ import time
 import os
 import pyautogui
 import threading
+import easyocr
 from dotenv import load_dotenv
 from Actions import Actions
 from inference_sdk import InferenceHTTPClient
