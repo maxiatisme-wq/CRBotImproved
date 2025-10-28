@@ -44,6 +44,8 @@ class ClashRoyaleEnv:
 
         self.match_over_detected = False
 
+        self.ocr_reader = easyocr.Reader(['en'], gpu=True)
+
     def setup_roboflow(self):
         api_key = os.getenv('ROBOFLOW_API_KEY')
         if not api_key:
@@ -164,6 +166,8 @@ class ClashRoyaleEnv:
     def _get_state(self):
         self.actions.capture_area(self.screenshot_path)
         elixir = self.actions.count_elixir()
+        self.actions.capture_tower_health()
+        tower_health_values = get_tower_health_values(self.ocr_reader)
         
         workspace_name = os.getenv('WORKSPACE_TROOP_DETECTION')
         if not workspace_name:
