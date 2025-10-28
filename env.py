@@ -6,6 +6,7 @@ import threading
 import easyocr
 from dotenv import load_dotenv
 from Actions import Actions
+from OCR import get_tower_health_values
 from inference_sdk import InferenceHTTPClient
 
 # Load environment variables from .env file
