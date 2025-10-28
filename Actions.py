@@ -83,7 +83,23 @@ class Actions:
             cards.append(save_path)
         
         return cards
-
+    
+    def capture_tower_health(self):
+        BASE_PATH = "C:/Users/maxia/CRBotImproved/ocr_captures/" #the folder the images are saved to
+        capture_data = {
+            "l_enemyprincess": (),
+            "enemy_king": (),
+            "r_enemyprincess": (),
+            "l_allyprincess": (),
+            "ally_king": (),
+            "r_allyprincess": (),
+        }
+        for name, coordinates in capture_data.items():
+            filename = f"{name}.png"
+            full_path = os.path.join(BASE_PATH, filename)
+            screenshot = pyautogui.screenshot(region = coordinates)
+            screenshot.save(full_path)
+    
     def count_elixir(self):
         if self.os_type == "Darwin":
             for i in range(10, 0, -1):
