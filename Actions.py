@@ -85,7 +85,7 @@ class Actions:
         return cards
     
     def capture_tower_health(self):
-        BASE_PATH = "C:/Users/maxia/CRBotImproved/ocr_captures/" #the folder the images are saved to
+        BASE_PATH = os.path.join(self.script_dir, 'ocr_captures') #the folder the images are saved to
         capture_data = {
             "l_enemyprincess": (),
             "enemy_king": (),
