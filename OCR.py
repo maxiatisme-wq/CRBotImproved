@@ -21,7 +21,7 @@ def process_image_for_health(image_path, reader):
             value = None
         
         # 3. Determine the tower name from the path
-        name = os.path.basename(image_path).replace(".png", "") # Assuming .png
+        name = os.path.basename(image_path).replace(".png", "")
         
         return (name, value)
         
