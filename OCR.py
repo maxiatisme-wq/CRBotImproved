@@ -45,7 +45,7 @@ def get_tower_health_values(reader):
     
     # Creates the list of full file paths to process
     image_paths = [
-        os.path.join(BASE_DIR, name + ".png") # Assuming you changed to .png in Actions.py
+        os.path.join(BASE_DIR, name + ".png")
         for name in TOWER_ORDER.keys()
     ]
     
