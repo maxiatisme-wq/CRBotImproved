@@ -22,7 +22,7 @@ class ClashRoyaleEnv:
         self.actions = Actions()
         self.rf_model = self.setup_roboflow()
         self.card_model = self.setup_card_roboflow()
-        self.state_size = 1 + 2 * (MAX_ALLIES + MAX_ENEMIES) + 6
+        self.state_size = 1 + 2 * (MAX_ALLIES + MAX_ENEMIES)
 
         self.num_cards = 4
         self.grid_width = 18
