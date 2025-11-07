@@ -89,12 +89,12 @@ class Actions:
         if not os.path.exists(BASE_PATH):
             os.makedirs(BASE_PATH)
         capture_data = {
-            "l_enemyprincess": (),
-            "enemy_king": (),
-            "r_enemyprincess": (),
-            "l_allyprincess": (),
-            "ally_king": (),
-            "r_allyprincess": (),
+            "l_enemyprincess": (1439, 166, 42, 16),  # (left, top, width, height)
+            "enemy_king": (1591, 48, 41, 19),
+            "r_enemyprincess": (1733, 166, 42, 16),
+            "l_allyprincess": (1439, 652, 43, 18),
+            "ally_king": (1590,788, 55, 19),
+            "r_allyprincess": (1733, 652, 43, 18),
         }
         for name, coordinates in capture_data.items():
             filename = f"{name}.png"

@@ -64,6 +64,10 @@ def train():
         total_reward = 0
         done = False
         while not done:
+            if controller.is_exit_requested():
+                print("Training interrupted during episode.")
+                done = True
+                break
             action = agent.act(state)
             next_state, reward, done = env.step(action)
             agent.remember(state, action, reward, next_state, done)
@@ -81,6 +85,7 @@ def train():
             with open(os.path.join("models", f"meta_{timestamp}.json"), "w") as f:
                 json.dump({"epsilon": agent.epsilon}, f)
             print(f"Model and epsilon saved to {model_path}")
-
+    env.close()
+    print("Training finished. Environment closed.")
 if __name__ == "__main__":
     train()
