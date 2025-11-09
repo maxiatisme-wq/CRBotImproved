@@ -83,4 +83,12 @@ def train():
             print(f"Model and epsilon saved to {model_path}")
 
 if __name__ == "__main__":
+    programRunning = False
+    try:
+        exec(open("crbot_ui.py").read())
+    except:
+        print("The UI failed to load! Attempting to continue without the UI.")
+        programRunning = True
+    if programRunning == True:
+        train()
     train()
