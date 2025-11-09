@@ -91,4 +91,3 @@ if __name__ == "__main__":
         programRunning = True
     if programRunning == True:
         train()
-    train()
