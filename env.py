@@ -3,6 +3,7 @@ import time
 import os
 import pyautogui
 import threading
+import datetime
 from dotenv import load_dotenv
 from Actions import Actions
 from inference_sdk import InferenceHTTPClient
@@ -74,6 +75,18 @@ class ClashRoyaleEnv:
         self.prev_enemy_presence = None
         self.prev_enemy_princess_towers = self._count_enemy_princess_towers()
         self.match_over_detected = False
+
+        latestGame = 0
+        with open("output.txt", "r") as output:
+            for line in output:
+                if "Game number" in line:
+                    latestGame += 1
+        
+        with open("output.txt", "a") as output:
+            output.write(f"Game number = {latestGame + 1}\n")
+            latestGame = 0 # reset to 0 to make code loopable
+            output.write(f"Time performed = {datetime.datetime.now()}\n")
+        
         return self._get_state()
 
     def close(self):
@@ -97,9 +110,13 @@ class ClashRoyaleEnv:
             result = self.game_over_flag
             if result == "victory":
                 reward += 100
+                with open("output.txt", "a") as output:
+                    output.write("Win/loss = Win\n")
                 print("Victory detected - ending episode")
             elif result == "defeat":
                 reward -= 100
+                with open("output.txt", "a") as output:
+                    output.write("Win/loss = Loss\n")
                 print("Defeat detected - ending episode")
             self.match_over_detected = False  # Reset for next episode
             return self._get_state(), reward, done
