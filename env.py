@@ -4,6 +4,7 @@ import os
 import pyautogui
 import threading
 import easyocr
+import datetime
 from dotenv import load_dotenv
 from Actions import Actions
 from OCR import get_tower_health_values
@@ -116,6 +117,17 @@ class ClashRoyaleEnv:
         
         initial_state = self._get_state()
         self.prev_enemy_princess_towers = self._count_enemy_princess_towers(self.current_predictions)
+
+        latestGame = 0
+        with open("output.txt", "r") as output:
+            for line in output:
+                if "Game number" in line:
+                    latestGame += 1
+        
+        with open("output.txt", "a") as output:
+            output.write(f"Game number = {latestGame + 1}\n")
+            latestGame = 0 # reset to 0 to make code loopable
+            output.write(f"Time performed = {datetime.datetime.now()}\n")
         
         return initial_state
         
@@ -195,9 +207,13 @@ class ClashRoyaleEnv:
             result = self.game_over_flag
             if result == "victory":
                 reward += 100
+                with open("output.txt", "a") as output:
+                    output.write("Win/loss = Win\n")
                 print("Victory detected - ending episode")
             elif result == "defeat":
                 reward -= 100
+                with open("output.txt", "a") as output:
+                    output.write("Win/loss = Loss\n")
                 print("Defeat detected - ending episode")
             
             self.match_over_detected = False
