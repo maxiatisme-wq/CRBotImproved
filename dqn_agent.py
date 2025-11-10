@@ -38,7 +38,7 @@ class DQNAgent:
         self.gamma = 0.95
         self.epsilon = 1.0
         self.epsilon_min = 0.01
-        self.epsilon_decay = 0.997
+        self.epsilon_decay = 0.999985
 
     def update_target_model(self):
         self.target_model.load_state_dict(self.model.state_dict())
