@@ -88,4 +88,11 @@ def train():
     env.close()
     print("Training finished. Environment closed.")
 if __name__ == "__main__":
-    train()
+    programRunning = False
+    try:
+        exec(open("crbot_ui.py").read())
+    except:
+        print("The UI failed to load! Attempting to continue without the UI.")
+        programRunning = True
+    if programRunning == True:
+        train()
