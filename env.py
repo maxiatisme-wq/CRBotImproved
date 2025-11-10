@@ -47,6 +47,7 @@ class ClashRoyaleEnv:
         self.match_over_detected = False
 
         self.ocr_reader = easyocr.Reader(['en'], gpu=True)
+        self.prev_tower_healths = [None]*6
         
         self.center_xcoord = 231
         
@@ -91,7 +92,6 @@ class ClashRoyaleEnv:
         if self._init_thread and self._init_thread.is_alive():
             self._init_thread.join(timeout=2)
 
-        # Instead, just wait for the new game to load after clicking "Play Again"
         time.sleep(3)
         self.game_over_flag = None
 
@@ -104,16 +104,18 @@ class ClashRoyaleEnv:
         self.match_over_detected = False
         self.max_tower_health = [None]*6
 
+        self.first_enemy_tower_check = 0
+        self.second_enemy_tower_check = 0
+        self.first_ally_tower_check = 0
+        self.second_ally_tower_check = 0
+
+        self.prev_tower_healths = [None]*6
+
         self._init_thread = threading.Thread(target=self._initialize_max_tower_health, daemon=True)
         self._init_thread.start()
         
         initial_state = self._get_state()
         self.prev_enemy_princess_towers = self._count_enemy_princess_towers(self.current_predictions)
-
-        self.first_enemy_tower_check = 0
-        self.second_enemy_tower_check = 0
-        self.first_ally_tower_check = 0
-        self.second_ally_tower_check = 0
         
         return initial_state
         
@@ -185,7 +187,6 @@ class ClashRoyaleEnv:
             self._init_thread.join(timeout=2)
 
     def step(self, action_index):
-        # --- THIS IS THE CORRECTED SECTION ---
         #game over check
         if self.game_over_flag:
             done = True
@@ -201,7 +202,6 @@ class ClashRoyaleEnv:
             
             self.match_over_detected = False
             return final_state, reward, done
-        # --- END OF CORRECTION ---
             
         # Check for match over (mid-game)
         if not self.match_over_detected and hasattr(self.actions, "detect_match_over") and self.actions.detect_match_over():
@@ -283,6 +283,7 @@ class ClashRoyaleEnv:
             with self._capture_lock:
                 self.actions.capture_tower_health()
                 self.tower_health_values = get_tower_health_values(self.ocr_reader)
+                print(f"Tower Healths Read by OCR: {self.tower_health_values}")
                 self.actions.capture_area(tmp_path)
 
             workspace_name = os.getenv('WORKSPACE_TROOP_DETECTION')
@@ -321,6 +322,8 @@ class ClashRoyaleEnv:
             return zero_state
 
         print("RAW predictions:", self.current_predictions)
+        if isinstance(self.current_predictions, dict) and 'predictions' in self.current_predictions:
+            self.current_predictions = self.current_predictions['predictions']
         print("Detected classes:", [repr(p.get("class", "")) for p in self.current_predictions if isinstance(p, dict)])
 
         TOWER_CLASSES = {
@@ -377,27 +380,37 @@ class ClashRoyaleEnv:
     def _compute_reward(self, state):
         if state is None:
             return 0
+    
+        # --- 1. OCR-Based Health Reward Calculation ---
+        health_reward = 0
+        current_healths = self.tower_health_values 
 
-        elixir = state[0] * 10
+        if self.prev_tower_healths is not None and current_healths is not None:
+            for i in range(6):
+                prev_hp = self.prev_tower_healths[i]
+                current_hp = current_healths[i]
 
-        # Only y coords so it does not bias left/right side
+                if prev_hp is None or current_hp is None:
+                    continue
+                health_diff = prev_hp - current_hp
+                if health_diff > 0:
+                    reward_value = (health_diff // 150) * 2.5
+                    if i < 3:  # Enemy towers
+                        health_reward += reward_value
+                    else:  # Ally towers
+                        health_reward -= reward_value
+
         enemy_positions = state[1 + 2 * MAX_ALLIES:-12]
-        enemy_presence = sum(enemy_positions[1::2])
-        
-        reward = -enemy_presence * 0.5
+        enemy_presence = sum(enemy_positions[1::2]) 
+        positional_reward = -enemy_presence * 0.1
 
-        # Elixir efficiency: reward for spending elixir if it reduces enemy presence
-        if self.prev_elixir is not None and self.prev_enemy_presence is not None:
-            elixir_spent = self.prev_elixir - elixir
-            enemy_reduced = self.prev_enemy_presence - enemy_presence
-            if elixir_spent > 0 and enemy_reduced > 0:
-                # tune this factor
-                reward += 2 * min(elixir_spent, enemy_reduced)
+        # --- 3. Update Previous Health for the NEXT step ---
+        if current_healths is not None:
+            self.prev_tower_healths = current_healths.copy()
 
-        self.prev_elixir = elixir
-        self.prev_enemy_presence = enemy_presence
-
-        return reward
+        # --- 4. Return the SUM of the rewards ---
+        print(f"Computed Rewards (Health: {health_reward:.2f}, Positional: {positional_reward:.2f})")
+        return health_reward + positional_reward
 
     def detect_cards_in_hand(self):
         try:
