@@ -4,11 +4,7 @@
   <p align="center">
     Bot that plays Clash Royale and learns by playing games
     <br />
-    <a href="https://github.com/krazyness/CRBot-public"><strong>Explore the docs »</strong></a>
-    <br />
-    <a href="https://github.com/krazyness/CRBot-public/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    &middot;
-    <a href="https://github.com/krazyness/CRBot-public/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/maxiatisme-wq/CRBotImproved"><strong>Explore the docs »</strong></a>
   </p>
 </div>
 
@@ -48,16 +44,12 @@ A Python-based Clash Royale AI bot that learns and improves through gameplay. Th
 
 *(Disclaimer: This project is not affiliated with Supercell. Use at your own risk—automated gameplay may violate Clash Royale's Terms of Service.)*
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ### Built With
 
 * [![PyTorch][PyTorch.org]][PyTorch-url]
 * [![Docker][Docker.com]][Docker-url]
 * [![Roboflow][Roboflow.com]][Roboflow-url]
 * [![Python][Python.org]][Python-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -88,6 +80,10 @@ A Python-based Clash Royale AI bot that learns and improves through gameplay. Th
   ```
   pip install numpy
   ```
+* EasyOCR
+  ```
+  pip install easyocr
+  ```
   
 ### Installation
 
@@ -95,7 +91,7 @@ A Python-based Clash Royale AI bot that learns and improves through gameplay. Th
 ![roboflow-tutorial](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNG1uNmtiaTAzamVvNnQwc2k3NDQzOXhzcmhxc2prZTBzM3U3YWY5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1KLeC2gw8pimdhH61C/giphy.gif)
 2. Clone the repo
    ```sh
-   git clone https://github.com/krazyness/CRBot-public.git
+   git clone https://github.com/maxiatisme-wq/CRBotImproved.git
    ```
 3. Set up your environment variables:
    - Copy `.env.example` to `.env`
@@ -143,16 +139,12 @@ A Python-based Clash Royale AI bot that learns and improves through gameplay. Th
 
 **NOTE:** The bot is broken right now, with it not handling "play again" correctly, as well as some minor bugs in gameplay. You can ask me any questions at the contacts page, or make contributions at the contributing page!
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
 ![Demo](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXFtZmh1eG10amdidGhuMXBlb3dyaWZ3MjB5a2d6ZXluYXN6MTY0ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SFDKIvtoRL1Og4S7fn/giphy.gif)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -170,37 +162,12 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- LICENSE -->
 ## License
 
 Distributed under the project_license. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Brody Dai - itrytomakestuff99@gmail.com
-
-Project Link: [https://github.com/krazyness/CRBot-public](https://github.com/krazyness/CRBot-public)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* [Best README Template](https://github.com/othneildrew/Best-README-Template)
-* Mr. Foster, AP Computer Science teacher
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
