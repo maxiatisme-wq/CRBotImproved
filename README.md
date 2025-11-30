@@ -44,16 +44,12 @@ A Python-based Clash Royale AI bot that learns and improves through gameplay. Th
 
 *(Disclaimer: This project is not affiliated with Supercell. Use at your own risk—automated gameplay may violate Clash Royale's Terms of Service.)*
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ### Built With
 
 * [![PyTorch][PyTorch.org]][PyTorch-url]
 * [![Docker][Docker.com]][Docker-url]
 * [![Roboflow][Roboflow.com]][Roboflow-url]
 * [![Python][Python.org]][Python-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -143,16 +139,12 @@ A Python-based Clash Royale AI bot that learns and improves through gameplay. Th
 
 **NOTE:** The bot is broken right now, with it not handling "play again" correctly, as well as some minor bugs in gameplay. You can ask me any questions at the contacts page, or make contributions at the contributing page!
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
 ![Demo](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXFtZmh1eG10amdidGhuMXBlb3dyaWZ3MjB5a2d6ZXluYXN6MTY0ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SFDKIvtoRL1Og4S7fn/giphy.gif)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -170,16 +162,12 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- LICENSE -->
 ## License
 
 Distributed under the project_license. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
