@@ -4,11 +4,7 @@
   <p align="center">
     Bot that plays Clash Royale and learns by playing games
     <br />
-    <a href="https://github.com/krazyness/CRBot-public"><strong>Explore the docs »</strong></a>
-    <br />
-    <a href="https://github.com/krazyness/CRBot-public/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    &middot;
-    <a href="https://github.com/krazyness/CRBot-public/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/maxiatisme-wq/CRBotImproved"><strong>Explore the docs »</strong></a>
   </p>
 </div>
 
@@ -88,6 +84,10 @@ A Python-based Clash Royale AI bot that learns and improves through gameplay. Th
   ```
   pip install numpy
   ```
+* EasyOCR
+  ```
+  pip install easyocr
+  ```
   
 ### Installation
 
@@ -95,7 +95,7 @@ A Python-based Clash Royale AI bot that learns and improves through gameplay. Th
 ![roboflow-tutorial](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNG1uNmtiaTAzamVvNnQwc2k3NDQzOXhzcmhxc2prZTBzM3U3YWY5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1KLeC2gw8pimdhH61C/giphy.gif)
 2. Clone the repo
    ```sh
-   git clone https://github.com/krazyness/CRBot-public.git
+   git clone https://github.com/maxiatisme-wq/CRBotImproved.git
    ```
 3. Set up your environment variables:
    - Copy `.env.example` to `.env`
@@ -188,7 +188,7 @@ Distributed under the project_license. See `LICENSE.txt` for more information.
 
 Brody Dai - itrytomakestuff99@gmail.com
 
-Project Link: [https://github.com/krazyness/CRBot-public](https://github.com/krazyness/CRBot-public)
+Project Link: [https://github.com/maxiatisme-wq/CRBotImproved](https://github.com/maxiatisme-wq/CRBotImproved)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
