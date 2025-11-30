@@ -183,27 +183,6 @@ Distributed under the project_license. See `LICENSE.txt` for more information.
 
 
 
-<!-- CONTACT -->
-## Contact
-
-Brody Dai - itrytomakestuff99@gmail.com
-
-Project Link: [https://github.com/maxiatisme-wq/CRBotImproved](https://github.com/maxiatisme-wq/CRBotImproved)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* [Best README Template](https://github.com/othneildrew/Best-README-Template)
-* Mr. Foster, AP Computer Science teacher
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [PyTorch.org]: https://img.shields.io/badge/pytorch-green?style=for-the-badge&logo=pytorch&link=https%3A%2F%2Fpytorch.org%2F
